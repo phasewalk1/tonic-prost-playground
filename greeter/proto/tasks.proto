@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package tasks;
+
+import "google/protobuf/empty.proto";
+
+message Task {
+  int32 id = 1;
+  string name = 2;
+  bool complete = 3;
+}
+
+message TaskRequest {
+  string name = 1;
+}
+
+service Tasks {
+  rpc GetTask(google.protobuf.Empty) returns (Task) {};
+  rpc GetTasks(google.protobuf.Empty) returns (Task) {};
+  rpc CreateTask(stream Task) returns (google.protobuf.Empty) {};
+  rpc DeleteTask(TaskRequest) returns (google.protobuf.Empty) {};
+}
