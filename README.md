@@ -2,7 +2,7 @@
 
 This is a _playground_ educational repository for early learning/experimentation with the [Tonic](https://github.com/hyperium/tonic)/[PROST](https://github.com/tokio-rs/prost) stack. None of the provided software is production ready, nor intended to be upgraded. 
 
-The playground implements a trivial two-service model we call the [_witch's pot_](#Witch's-Pot:-Visualization). The workspace contains a single _submodule_ which defines protocol buffers for a `TasksServer`. The `TasksServer` is implemented in TypeScript.
+The playground implements a trivial two-service model we call the [_witch's pot_](#Witch's-Pot:-Visualization). The workspace contains a single _submodule_ which defines protocol buffers for a `Tasks` service. The `TasksServer` is implemented in TypeScript.
 
 The [_greeter_](https://github.com/phasewalk1/tonic-prost-playground/tree/main/greeter) directory contains relevant _Tonic_/_Prost_ code which defines a second gRPC service, the `Greeter`. A novel connection is made between the Rust and TypeScript server within [server.rs](https://github.com/phasewalk1/tonic-prost-playground/blob/main/greeter/src/server.rs),
 specifically, the asynchronous function `say_hello` - the defintion of `Greeter`'s RPC method.
@@ -11,13 +11,18 @@ Run Locally
 ---
 We'd like to note that the executions happening under the hood here are not necessarily _interesting_ or _dynamic_ at all; they weren't designed that way. The software provided in this repository was designed only to demonstrate a method for connecting two gRPC servers (server-to-server RPC calls).
 
-First, let's install the `npm` dependencies for the TypeScript `Tasks` service, provided by [@mattg1243](https://github.com/mattg1243).
+First, we need to sync the submodule
+```sh
+git submodule init && git submodule sync
+git submodule update
+```
+Now we can install the `npm` dependencies for the TypeScript `Tasks` service.
 
 ```sh
 cd tasks/ && npm i
 ```
 
-We can now start the `TasksServer` by
+Ok, let's start the `TasksServer` by
 
 ```sh
 npm run serverstart
