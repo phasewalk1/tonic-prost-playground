@@ -45,7 +45,7 @@ This is another alias provided that begins the main execution flow of this examp
 The `GreeterServer` then instantiates a `TasksClient` and uses it to make an RPC call at the `TasksServer`, bundling its return value into its own and returning the bundle to the `GreeterClient`.
 
 ## Witch's Pot: Visualization
-Here's a visualization of the very simple execution architecture we just exercised above. I call it the _witch's pot_ model.
+Here's a visualization of the very simple execution architecture we just exercised above. We call it the _witch's pot_ model.
 
 
 <img align="middle" src="doc/archi.JPG">
