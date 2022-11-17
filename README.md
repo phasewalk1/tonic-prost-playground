@@ -1,6 +1,6 @@
 # ⚭ tonic-prost-playground
 
-This is a _playground_ repository for early learning/experimentation with the [Tonic](https://github.com/hyperium/tonic)/[PROST](https://github.com/tokio-rs/prost) stack.
+This is a _playground_ educational repository for early learning/experimentation with the [Tonic](https://github.com/hyperium/tonic)/[PROST](https://github.com/tokio-rs/prost) stack. None of the provided software is production ready, nor intended to be upgraded. 
 
 The playground implements a trivial two-service model we call the [_witch's pot_](#Witch's-Pot:-Visualization). The workspace contains a single _submodule_ which defines protocol buffers for a `TasksServer`. The `TasksServer` is implemented in TypeScript.
 
@@ -9,9 +9,9 @@ specifically, the asynchronous function `say_hello` - the defintion of `Greeter`
 
 Run Locally
 ---
-I'd like to note that the execution flow of this is not necessarily interesting or dynamic at all - it is simply meant to be a "let's try and hook two services up" example for learning.
+We'd like to note that the executions happening under the hood here are not necessarily _interesting_ or _dynamic_ at all; they weren't designed that way. The software provided in this repository was designed only to demonstrate a method for connecting two gRPC servers (server-to-server RPC calls).
 
-First, let's install the `npm` dependencies for the TypeScript `Tasks` service.
+First, let's install the `npm` dependencies for the TypeScript `Tasks` service, provided by [@mattg1243](https://github.com/mattg1243).
 
 ```sh
 cd tasks/ && npm i
