@@ -7,8 +7,8 @@ The workspace contains a single _submodule_ which defines protocol buffers for a
 The [_greeter_](https://github.com/phasewalk1/tonic-prost-playground/tree/main/greeter) directory contains relevant _Tonic_/_Prost_ code which defines a second gRPC service, the `Greeter`. A novel connection is made between the Rust and TypeScript server within [server.rs](https://github.com/phasewalk1/tonic-prost-playground/blob/main/greeter/src/server.rs),
 specifically, the asynchronous function `say_hello` - the defintion of `Greeter`'s RPC method.
 
-## Run Locally
-
+Run Locally
+---
 I'd like to note that the execution flow of this is not necessarily interesting or dynamic at all - it is simply meant to be a "let's try and hook two services up" example for learning.
 
 First, let's install the `npm` dependencies for the TypeScript `Tasks` service.
@@ -44,5 +44,10 @@ cargo client
 This is another alias provided that begins the main execution flow of this example. Here, we run a `GreeterClient` instance that calls an RPC method at the `GreeterServer`.
 The `GreeterServer` then instantiates a `TasksClient` and uses it to make an RPC call at the `TasksServer`, bundling its return value into its own and returning the bundle to the `GreeterClient`.
 
-Here's a visualization of the very simple execution architecture we just exercised.
+---
+Visualized
+---
+Here's a visualization of the very simple execution architecture we just exercised above.
+
+
 <img align="middle" src="doc/archi.JPG">
