@@ -1,8 +1,8 @@
 # ⚭ tonic-prost-playground
 
-This is a _playground_ repository for early experimentation with the [Tonic](https://github.com/hyperium/tonic)/[PROST](https://github.com/tokio-rs/prost) stack.
+This is a _playground_ repository for early learning/experimentation with the [Tonic](https://github.com/hyperium/tonic)/[PROST](https://github.com/tokio-rs/prost) stack.
 
-The workspace contains a single _submodule_ which defines protocol buffers for a `TasksServer`. The `TasksServer` is implemented in TypeScript.
+The playground implements a trivial two-service model we call the [_witch's pot_](#Witch's-Pot:-Visualization). The workspace contains a single _submodule_ which defines protocol buffers for a `TasksServer`. The `TasksServer` is implemented in TypeScript.
 
 The [_greeter_](https://github.com/phasewalk1/tonic-prost-playground/tree/main/greeter) directory contains relevant _Tonic_/_Prost_ code which defines a second gRPC service, the `Greeter`. A novel connection is made between the Rust and TypeScript server within [server.rs](https://github.com/phasewalk1/tonic-prost-playground/blob/main/greeter/src/server.rs),
 specifically, the asynchronous function `say_hello` - the defintion of `Greeter`'s RPC method.
@@ -44,10 +44,8 @@ cargo client
 This is another alias provided that begins the main execution flow of this example. Here, we run a `GreeterClient` instance that calls an RPC method at the `GreeterServer`.
 The `GreeterServer` then instantiates a `TasksClient` and uses it to make an RPC call at the `TasksServer`, bundling its return value into its own and returning the bundle to the `GreeterClient`.
 
----
-Visualized
----
-Here's a visualization of the very simple execution architecture we just exercised above.
+## Witch's Pot: Visualization
+Here's a visualization of the very simple execution architecture we just exercised above. I call it the _witch's pot_ model.
 
 
 <img align="middle" src="doc/archi.JPG">
