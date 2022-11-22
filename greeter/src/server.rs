@@ -7,7 +7,7 @@ use pb::hello_world::{
 };
 use pb::tasks::tasks_client::TasksClient;
 
-// Organize pb code into a module
+#[doc = "Protobuf codegen"]
 pub mod pb {
     pub use hello_world::*;
 
@@ -19,13 +19,15 @@ pub mod pb {
     }
 }
 
-/// A very simple greeter service that greets a user by name.
+// @brief: Greeter service impl
 #[derive(Debug, Default)]
+#[doc = "A very simple greeter service that greets a user by name."]
 pub struct MyGreeter {}
 
+// @brief: Implement the RPC methods for Greeter service
 #[tonic::async_trait]
 impl Greeter for MyGreeter {
-    // impl the various Greeter service RPC methods here
+    // @params: Request<HelloRequest> - request from client
     async fn say_hello(
         &self,
         request: Request<HelloRequest>,
@@ -37,8 +39,7 @@ impl Greeter for MyGreeter {
             message: format!("Hello {}!", request.into_inner().name).into(),
         };
 
-        // Nested RPC - establish a TasksClient and call the GetTasks RPC
-        // This is where the two gRPC services are linked together in this example
+        // In production, the Tasks service would not be running on the same server.
         let mut client = TasksClient::connect("http://[::1]:3001").await.unwrap();
         let request = tonic::Request::new(());
         // Make an RPC call to the Tasks service
@@ -49,6 +50,7 @@ impl Greeter for MyGreeter {
     }
 }
 
+// @brief: Main server entry point
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "[::1]:50051".parse()?;
